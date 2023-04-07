@@ -1,0 +1,577 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Pet Store",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Sample APIs"
+    }
+  ],
+  "paths": {
+    "/pet/{petId}": {
+      "delete": {
+        "summary": "Deletes a pet",
+        "x-apifox-folder": "Sample APIs",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sample APIs"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "Pet id to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 0
+                    }
+                  },
+                  "required": [
+                    "code"
+                  ],
+                  "x-apifox-orders": [
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success example",
+                    "value": {
+                      "code": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/2289021/apis/api-65252661-run"
+      },
+      "get": {
+        "summary": "Find pet by ID",
+        "x-apifox-folder": "Sample APIs",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sample APIs"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "pet ID",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 0,
+                      "description": "status code"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Pet"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "code",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success example",
+                    "value": {
+                      "code": 0,
+                      "data": {
+                        "name": "Hello Kity",
+                        "photoUrls": [
+                          "http://dummyimage.com/400x400"
+                        ],
+                        "id": 3,
+                        "category": {
+                          "id": 71,
+                          "name": "Cat"
+                        },
+                        "tags": [
+                          {
+                            "id": 22,
+                            "name": "Cat"
+                          }
+                        ],
+                        "status": "sold"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/2289021/apis/api-65252664-run"
+      }
+    },
+    "/pet": {
+      "put": {
+        "summary": "Update an existing pet",
+        "x-apifox-folder": "Sample APIs",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sample APIs"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Pet"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "code",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success example",
+                    "value": {
+                      "code": 0,
+                      "data": {
+                        "name": "Hello Kity",
+                        "photoUrls": [
+                          "http://dummyimage.com/400x400"
+                        ],
+                        "id": 3,
+                        "category": {
+                          "id": 71,
+                          "name": "Cat"
+                        },
+                        "tags": [
+                          {
+                            "id": 22,
+                            "name": "Cat"
+                          }
+                        ],
+                        "status": "sold"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Record not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": [],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/2289021/apis/api-65252662-run"
+      },
+      "post": {
+        "summary": "Add a new pet to the store",
+        "x-apifox-folder": "Sample APIs",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sample APIs"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Pet Name",
+                    "example": "Hello Kitty"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "Pet Sales Status",
+                    "example": "sold"
+                  }
+                },
+                "required": [
+                  "name",
+                  "status"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 0
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Pet"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "code",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success example",
+                    "value": {
+                      "code": 0,
+                      "data": {
+                        "name": "Hello Kity",
+                        "photoUrls": [
+                          "http://dummyimage.com/400x400"
+                        ],
+                        "id": 3,
+                        "category": {
+                          "id": 71,
+                          "name": "Cat"
+                        },
+                        "tags": [
+                          {
+                            "id": 22,
+                            "name": "Cat"
+                          }
+                        ],
+                        "status": "sold"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/2289021/apis/api-65252665-run"
+      }
+    },
+    "/pet/findByStatus": {
+      "get": {
+        "summary": "Finds Pets by status",
+        "x-apifox-folder": "Sample APIs",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sample APIs"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet"
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success example",
+                    "value": {
+                      "code": 0,
+                      "data": [
+                        {
+                          "name": "Hello Kity",
+                          "photoUrls": [
+                            "http://dummyimage.com/400x400"
+                          ],
+                          "id": 3,
+                          "category": {
+                            "id": 71,
+                            "name": "Cat"
+                          },
+                          "tags": [
+                            {
+                              "id": 22,
+                              "name": "Cat"
+                            }
+                          ],
+                          "status": "sold"
+                        },
+                        {
+                          "name": "White Dog",
+                          "photoUrls": [
+                            "http://dummyimage.com/400x400"
+                          ],
+                          "id": 3,
+                          "category": {
+                            "id": 71,
+                            "name": "Dog"
+                          },
+                          "tags": [
+                            {
+                              "id": 22,
+                              "name": "Dog"
+                            }
+                          ],
+                          "status": "sold"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "code"
+                  ],
+                  "x-apifox-orders": [
+                    "code"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/2289021/apis/api-65252663-run"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "Tag ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Tag Name"
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Sample Schemas"
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "Category ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Category Name"
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Sample Schemas"
+      },
+      "Pet": {
+        "required": [
+          "name",
+          "photoUrls",
+          "id",
+          "category",
+          "tags",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "maximum": 5000,
+            "description": "Pet ID"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "group"
+          },
+          "name": {
+            "type": "string",
+            "example": "doggie",
+            "description": "name"
+          },
+          "photoUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "image URL"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "description": "tag"
+          },
+          "status": {
+            "type": "string",
+            "description": "Pet Sales Status",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "category",
+          "name",
+          "photoUrls",
+          "tags",
+          "status"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Sample Schemas"
+      }
+    }
+  },
+  "servers": []
+}
